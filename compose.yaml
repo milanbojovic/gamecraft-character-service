@@ -1,0 +1,20 @@
+services:
+  character-service-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: character-service-db
+    command: /bin/bash ./entrypoint.sh
+    ports:
+      - "1435:1433"
+    expose:
+      - "1435"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong!Passw0rd
+    volumes:
+      - ./src/main/resources/database/entrypoint.sh:/entrypoint.sh
+      - ./src/main/resources/database/docker-db-init.sh:/docker-db-init.sh
+      - ./src/main/resources/database//db-init.sql:/db-init.sql
+
+
+
+
