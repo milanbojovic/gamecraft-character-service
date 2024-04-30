@@ -1,4 +1,4 @@
-# World of Gamecraft Character Service
+# World of Gamecraft - Character Service
 
 This is the Character Service for the World of Gamecraft project. This service allows registered users to create and manage their characters in the game world. This service is where most of the domain logic is implemented.
 
