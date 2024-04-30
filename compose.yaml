@@ -4,9 +4,9 @@ services:
     container_name: character-service-db
     command: /bin/bash ./entrypoint.sh
     ports:
-      - "1435:1433"
+      - "1434:1433"
     expose:
-      - "1435"
+      - "1434"
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=YourStrong!Passw0rd
@@ -14,7 +14,18 @@ services:
       - ./src/main/resources/database/entrypoint.sh:/entrypoint.sh
       - ./src/main/resources/database/docker-db-init.sh:/docker-db-init.sh
       - ./src/main/resources/database//db-init.sql:/db-init.sql
-
-
+  redis:
+    image: redis:6.2.5-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
+    command: redis-server
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 30
 
 

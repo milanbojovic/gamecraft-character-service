@@ -1,3 +1,7 @@
+-- Insert data into users table
+INSERT INTO character_schema.users (id, role)
+VALUES (1, 'ROLE_GameMaster'),
+       (2, 'ROLE_User');
 -- Insert data into character_class table
 INSERT INTO character_schema.character_class (name, description)
 VALUES ('Warrior', 'Strong and brave'),

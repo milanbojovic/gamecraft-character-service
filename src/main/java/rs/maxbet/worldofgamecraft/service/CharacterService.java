@@ -3,6 +3,7 @@ package rs.maxbet.worldofgamecraft.service;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import rs.maxbet.worldofgamecraft.dao.CharacterItemRepository;
 import rs.maxbet.worldofgamecraft.dao.CharacterRepository;
@@ -38,6 +39,7 @@ public class CharacterService {
         return this.characterItemRepository.findAllByCharacterId(character.getId()).stream().map(CharacterItem::getItem).toList();
     }
 
+    @Cacheable(value = "character", key = "#character.id")
     public Character calculateStats(Character character) {
         List<Item> items = this.getItemsForCharacter(character);
         int bonusStrengthSum = items.stream().mapToInt(Item::getBonusStrength).sum();

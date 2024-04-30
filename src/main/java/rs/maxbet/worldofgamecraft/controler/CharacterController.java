@@ -5,37 +5,37 @@
 
 package rs.maxbet.worldofgamecraft.controler;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import rs.maxbet.worldofgamecraft.data.Character;
 import rs.maxbet.worldofgamecraft.data.Item;
 import rs.maxbet.worldofgamecraft.data.Users;
 import rs.maxbet.worldofgamecraft.data.representation.CharacterDetailes;
 import rs.maxbet.worldofgamecraft.data.representation.CharacterShort;
+import rs.maxbet.worldofgamecraft.data.transport.CharacterCreationEvent;
 import rs.maxbet.worldofgamecraft.service.CharacterService;
+import rs.maxbet.worldofgamecraft.service.MessageService;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping({"/api"})
 public class CharacterController {
     @Autowired
     private final CharacterService characterService;
+    @Autowired
+    private final MessageService messageService;
 
-    public CharacterController(CharacterService characterService, RabbitTemplate rabbitTemplate) {
+    public CharacterController(CharacterService characterService, MessageService messageService) {
         this.characterService = characterService;
+        this.messageService = messageService;
     }
 
     @PreAuthorize("hasRole('ROLE_GameMaster')")
@@ -52,10 +52,10 @@ public class CharacterController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("error", "Character with id " + id + " not found"));
         } else {
             Users user = (Users)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            if ("User".equals(user.getRole()) && user.getId() != ((Character)optCharacter.get()).getCreatedBy()) {
+            if ("User".equals(user.getRole()) && user.getId() != (optCharacter.get()).getCreatedBy()) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("error", "You are not the owner of this character"));
             } else {
-                Character character = this.characterService.calculateStats((Character)optCharacter.get());
+                Character character = this.characterService.calculateStats(optCharacter.get());
                 return ResponseEntity.ok(new CharacterDetailes(character, this.getItems(character)));
             }
         }
@@ -74,6 +74,7 @@ public class CharacterController {
         }
 
         this.characterService.createCharacter(character);
+        this.messageService.publishCharacterCreation(new CharacterCreationEvent(character));
     }
 
     @GetMapping({"/characters"})

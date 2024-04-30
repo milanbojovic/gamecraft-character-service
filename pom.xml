@@ -12,7 +12,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>rs.maxbet</groupId>
-    <artifactId>gamecraft-combat-service</artifactId>
+    <artifactId>gamecraft-character-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>gamecraft-character-service</name>
     <description>gamecraft-character-service</description>
@@ -21,11 +21,11 @@
         <java.version>17</java.version>
         <flyway.user>sa</flyway.user>
         <flyway.password>YourStrong!Passw0rd</flyway.password>
-        <flyway.schemas>combat_schema</flyway.schemas>
+        <flyway.schemas>character_schema</flyway.schemas>
         <flyway.driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</flyway.driver>
-        <flyway.url>jdbc:sqlserver://localhost:1435;encrypt=false;trustServerCertificate=true;databaseName=combat_db</flyway.url>
+        <flyway.url>jdbc:sqlserver://localhost:1434;encrypt=false;trustServerCertificate=true;databaseName=character_db</flyway.url>
         <flyway.locations>classpath:db/migration</flyway.locations>
-        <flyway.defaultSchema>combat_schema</flyway.defaultSchema>
+        <flyway.defaultSchema>character_schema</flyway.defaultSchema>
     </properties>
 
     <dependencies>
@@ -39,7 +39,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

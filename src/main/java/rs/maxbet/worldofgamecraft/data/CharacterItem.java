@@ -6,10 +6,14 @@ import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "character_item")
 @IdClass(CharacterItemId.class)
+@Data
+@NoArgsConstructor
 public class CharacterItem {
     @Id
     @ManyToOne
@@ -19,4 +23,9 @@ public class CharacterItem {
     @ManyToOne
     @JoinColumn(name = "item_id")
     private Item item;
+
+    public CharacterItem(final Character character, final Item item) {
+        this.character = character;
+        this.item = item;
+    }
 }
