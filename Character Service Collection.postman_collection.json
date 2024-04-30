@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "7d1e419f-304e-4c2f-a81f-f43dbc227d55",
+		"name": "Character Service Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "178308"
+	},
+	"item": [
+		{
+			"name": "GetCharacters",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MSwicm9sZSI6IkdhbWVNYXN0ZXIiLCJzdWIiOiJtaWtpIiwiZXhwIjoxNzEyNzA0NjQ5fQ.CrFsXRs8AuCLCZzuz1iEbWmFwTmt2ERYQKHOZgVtsOQ3SgdoRL_zrWhI_nbwqSggoPvY7Lxv3JoSAw-fFG1ugA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/character",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"character"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUsers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MSwicm9sZSI6IkdhbWVNYXN0ZXIiLCJzdWIiOiJtaWtpIiwiZXhwIjoxNzEyNzA0NjQ5fQ.CrFsXRs8AuCLCZzuz1iEbWmFwTmt2ERYQKHOZgVtsOQ3SgdoRL_zrWhI_nbwqSggoPvY7Lxv3JoSAw-fFG1ugA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/users",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCharacterById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6Miwicm9sZSI6IlJPTEVfVXNlciIsInN1YiI6ImJ1YmljYSIsImV4cCI6MTcxMjcwNjg0MH0.nxXEAy1mOn6X-7M4Rk-eVQPfrKJBIn5vaY8aEIMqywRGKl6G0sTvxSlOr-IcFFyx_NXyZEK3AJOMtlLEwUW_5Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/character/1",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"character",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCharacter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"zzzz\",\n        \"health\": 500,\n        \"mana\": 200,\n        \"baseStrength\": 50,\n        \"baseAgility\": 20,\n        \"baseIntelligence\": 200,\n        \"baseFaith\": 500,\n        \"characterClass\": \"Warrior\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/character",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"character"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllCharacters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/characters",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateClass",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"name\": \"Hobbit\",\n    \"description\": \"Short and angry\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/class",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"class"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetClasses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/class",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"class"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetClassById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/class/1",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"class",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetItems",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/items",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetItemsById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/items/1007",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"items",
+						"1007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateItem",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Utoka\",\n    \"description\": \"Cheating weapon\",\n    \"bonusStrength\": 200,\n    \"bonusAgility\": 250,\n    \"bonusIntelligence\": 800,\n    \"bonusFaith\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/items",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ItemGrant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"name\": \"Hobbit\",\n    \"description\": \"Short and angry\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/items/grant",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"items",
+						"grant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ItemGift",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"name\": \"Hobbit\",\n    \"description\": \"Short and angry\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:{{portCharacterService}}/api/items/grant",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{portCharacterService}}",
+					"path": [
+						"api",
+						"items",
+						"grant"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MSwicm9sZSI6IlJPTEVfR2FtZU1hc3RlciIsInN1YiI6ImpvaG4iLCJleHAiOjE3MTQ0MTgwNTV9.lIqbP2TauRBk3W0d677RjP0Jrf0Hq2GVb8bIoRMbLBwiK1fAawF6R7QozET7hOgSEkUjRm3xI63s1tZrPECz-Q",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

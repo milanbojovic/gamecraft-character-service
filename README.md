@@ -30,6 +30,7 @@ This is the Character Service for the World of Gamecraft project. This service a
 
 ### Running with Maven
 
+Prerequisites: Make sure that Accounts Service is running with all containers (RabbitMQ, SQL Server).
 1. Navigate to the project directory in your terminal.
 2. Run the command `mvn clean install`.
 3. Then run the command `java -jar target/character-service-0.0.1-SNAPSHOT.jar`.
